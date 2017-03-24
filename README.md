@@ -18,5 +18,5 @@ Console.WriteLine(url);
 #### Result:
 
 ```
-http://www.test.com/api//users/10/rooms
+http://www.test.com/api/users/10/rooms
 ```

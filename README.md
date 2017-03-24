@@ -12,7 +12,7 @@ Indexer properties can also be used for extending the url with things which cann
 ```csharp
 dynamic root = new DynamicUrl("http://my.test.com/api");
 var url = root.SomeThing[1].Dynamic["bla"];
-xConsole.WriteLine(url);
+Console.WriteLine(url);
 ```
 
 #### Result:

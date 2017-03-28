@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Dynamic;
-using System.Net.Http;
+using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace DynamicUrl
 {
@@ -28,11 +27,9 @@ namespace DynamicUrl
         public override bool TryGetMember(GetMemberBinder binder, out object result)
         {
             var matches = Regex.Matches(binder.Name, @"\p{Lu}\p{Ll}*");
-            var words = new List<string>();
-            foreach (var match in matches)
-            {
-                words.Add(match.ToString().ToLower());
-            }
+            var words = matches
+                .Cast<Match>()
+                .Select(match => match.ToString().ToLower());
             result = new DynamicUrl(_url + "/" + string.Join("-", words));
             return true;
         }
